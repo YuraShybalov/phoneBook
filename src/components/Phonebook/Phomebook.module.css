@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
   }
-  &.buttonSubmit {
-    width: 100px;
-  }
+}
+.buttonSubmit {
+  max-width: 100px;
 }
