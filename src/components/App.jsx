@@ -1,4 +1,5 @@
 import { Component } from 'react';
+// import contacts from './data/contacts.json';
 
 import Container from './Container/Container';
 import Phonebook from './Phonebook/Phonebook';
@@ -24,7 +25,7 @@ class App extends Component {
           />
         </Container>
         <Container title={'Contacts'}>
-          <Contacts contacts={this.state.contacts} />
+          <Contacts />
         </Container>
       </div>
     );
