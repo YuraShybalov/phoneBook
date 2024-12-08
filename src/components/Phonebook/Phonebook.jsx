@@ -1,48 +1,45 @@
-import { Component } from 'react';
 import css from './Phomebook.module.css';
 
-class Phonebook extends Component {
-  state = {
-    filter: '',
-    name: '',
-    number: '',
+const Phonebook = ({ handleChange, handleAddContact, state }) => {
+  const handleSubmit = event => {
+    event.preventDefault();
+    const { name, number } = state;
+
+    if (!name || !number) {
+      alert('Please fill out all fields.');
+      return;
+    }
+
+    handleAddContact({ name, number });
   };
 
-  handleChange = ({ target: { value, name } }) => {
-    this.setState({ [name]: value });
-  };
-
-  render() {
-    return (
-      <div>
-        <form className={css.form} action="">
-          Name
-          <label className={css.label} htmlFor="">
-            <input
-              onChange={this.handleChange}
-              type="text"
-              name="name"
-              value={this.state.name}
-              required
-            />
-          </label>
-          <label className={css.label} htmlFor="">
-            Number
-            <input
-              onChange={this.handleChange}
-              type="text"
-              name="number"
-              value={this.state.number}
-              required
-            />
-          </label>
-          <button className={css.buttonSubmit} type="submit">
-            Add contact
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <form onSubmit={handleSubmit} className={css.form}>
+      <label className={css.label}>
+        Name
+        <input
+          type="text"
+          name="name"
+          value={state.name}
+          onChange={handleChange}
+          required
+        />
+      </label>
+      <label className={css.label}>
+        Number
+        <input
+          type="text"
+          name="number"
+          value={state.number}
+          onChange={handleChange}
+          required
+        />
+      </label>
+      <button type="submit" className={css.buttonSubmit}>
+        Add contact
+      </button>
+    </form>
+  );
+};
 
 export default Phonebook;
